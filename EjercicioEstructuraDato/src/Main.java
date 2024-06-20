@@ -26,5 +26,23 @@ public class Main {
         System.out.println("Lista con nodo final eliminado: " + lista);
         lista.eliminarInicio();
         System.out.println("lista con nodo inicio eliminado: " + lista);
+
+        ListaDoblementeEnalazada listaDoble = new ListaDoblementeEnalazada(29);
+        listaDoble.agregar(10);
+        listaDoble.agregar(20);
+        System.out.println("Lista Original: " + listaDoble);
+        listaDoble.insertar(15, 2);
+        listaDoble.insertar(15, 2);
+        listaDoble.insertar(15, 2);
+        listaDoble.insertar(15, 2);
+        listaDoble.insertar(15, 2);
+        listaDoble.insertar(12, 1);
+        System.out.println("Lista con insertados: " + listaDoble);
+        listaDoble.eliminarRepetidos(15);
+        System.out.println("Lista con repetidos eliminados: " + listaDoble);
+        listaDoble.ordenarAscendente();
+        System.out.println("Lista ordenada: " + listaDoble);
+
+
     }
 }

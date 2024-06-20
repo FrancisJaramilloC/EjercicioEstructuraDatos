@@ -3,7 +3,10 @@
  */
 public class NodoLista extends Nodo{
 
-    protected NodoLista siguiente; // El siguiente nodo en la lista
+    protected NodoLista actual;
+    protected NodoLista siguiente;
+    protected NodoLista anterior;
+
 
     /**
      * Constructor para NodoLista.
@@ -11,17 +14,37 @@ public class NodoLista extends Nodo{
      */
     public NodoLista(int valor) {
         super(valor);
-        this.siguiente = null;
+        this.actual = null;
     }
 
     /**
      * Getter para el siguiente nodo.
      * @return El siguiente nodo en la lista.
      */
-    public NodoLista getSiguiente() {
-        return siguiente;
+    public NodoLista getActual() {
+        return actual;
     }
-
+    public int getValor(){
+        return this.valor;
+    }
+    public void setValor(int valor){
+        this.valor = valor;
+    }
+    public void setActual(NodoLista actual){
+        this.actual = actual;
+    }
+    public void setSiguiente(NodoLista siguiente){
+        this.siguiente = siguiente;
+    }
+    public void setAnterior(NodoLista anterior){
+        this.anterior = anterior;
+    }
+    public NodoLista getAnterior(){
+        return this.anterior;
+    }
+    public NodoLista getSiguiente(){
+        return this.siguiente;
+    }
     /**
      * Inserta un nuevo nodo en una posición específica en la lista.
      * @param valor El valor del nuevo nodo.
@@ -31,11 +54,11 @@ public class NodoLista extends Nodo{
     public boolean insertar(int valor, int posicion) {
         if (posicion == 0) {
             NodoLista nuevoNodo = new NodoLista(valor);
-            nuevoNodo.siguiente = this.siguiente;
-            this.siguiente = nuevoNodo;
+            nuevoNodo.actual = this.actual;
+            this.actual = nuevoNodo;
             return true;
-        } else if (this.siguiente != null) {
-            return this.siguiente.insertar(valor, posicion - 1);
+        } else if (this.actual != null) {
+            return this.actual.insertar(valor, posicion - 1);
         } else {
             return false;
         }
@@ -47,11 +70,11 @@ public class NodoLista extends Nodo{
      * @return true si el nodo se agregó correctamente, false en caso contrario.
      */
     public boolean agregar(int valor){
-        if(this.siguiente == null){
-            this.siguiente = new NodoLista(valor);
+        if(this.actual == null){
+            this.actual = new NodoLista(valor);
             return true;
         }else{
-            return this.siguiente.agregar(valor);
+            return this.actual.agregar(valor);
         }
     }
 
@@ -67,7 +90,7 @@ public class NodoLista extends Nodo{
             if (current.getValor() == valorBuscado) {
                 return position;
             }
-            current = current.getSiguiente();
+            current = current.getActual();
             position++;
         }
         return -1; // Devuelve -1 si el valor no se encuentra
@@ -79,20 +102,21 @@ public class NodoLista extends Nodo{
      */
     public void eliminarNodo(int posicion){
         if(posicion == 1){
-            this.siguiente = this.siguiente.siguiente;
+            this.actual = this.actual.actual;
         }else{
-            this.siguiente.eliminarNodo(posicion - 1);
+            this.actual.eliminarNodo(posicion - 1);
         }
     }
+
 
     /**
      * Elimina el último nodo en la lista.
      */
     public void eliminarFinal(){
-        if(this.siguiente.siguiente == null){
-            this.siguiente = null;
+        if(this.actual.actual == null){
+            this.actual = null;
         }else{
-            this.siguiente.eliminarFinal();
+            this.actual.eliminarFinal();
         }
     }
 
@@ -100,6 +124,13 @@ public class NodoLista extends Nodo{
      * Elimina el primer nodo en la lista.
      */
     public void eliminarInicio(){
-        this.siguiente = this.siguiente.siguiente;
+        this.actual = this.actual.actual;
+    }
+    public void eliminar(int valor){
+        if(this.actual.getValor() == valor){
+            this.actual = this.actual.actual;
+        }else{
+            this.actual.eliminar(valor);
+        }
     }
 }

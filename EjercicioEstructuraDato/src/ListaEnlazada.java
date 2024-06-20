@@ -1,7 +1,7 @@
 public class ListaEnlazada implements Lista {
-    private int numNodos;
-    private NodoLista inicio;
-    private NodoLista fin;
+    protected int numNodos;
+    protected NodoLista inicio;
+    protected NodoLista fin;
 
     public ListaEnlazada(int valor) {
         this.inicio = new NodoLista(valor);
@@ -18,7 +18,7 @@ public class ListaEnlazada implements Lista {
     public boolean insertar(int valor, int posicion){
         if (posicion == 0) {
             NodoLista nuevoNodo = new NodoLista(valor);
-            nuevoNodo.siguiente = this.inicio;
+            nuevoNodo.actual = this.inicio;
             this.inicio = nuevoNodo;
             this.numNodos++;
             return true;
@@ -41,18 +41,19 @@ public class ListaEnlazada implements Lista {
     }
     public void eliminarInicio(){
         this.numNodos--;
-        this.inicio = this.inicio.siguiente;
+        this.inicio = this.inicio.actual;
     }
+
     @Override
     public String toString() {
         StringBuilder lista = new StringBuilder("Num nodos: " + this.numNodos + "\nLista: ");
         NodoLista nodo = this.inicio;
         while (nodo != null) {
             lista.append(nodo.getValor());
-            if (nodo.getSiguiente() != null) {
+            if (nodo.getActual() != null) {
                 lista.append(" -> ");
             }
-            nodo = nodo.getSiguiente();
+            nodo = nodo.getActual();
         }
         return lista.toString();
     }
