@@ -1,10 +1,10 @@
 public class Nodo implements INodo {
 
     //Atributos
-    private int valor;
+    protected int valor;
     //Relaciones
-    private Nodo izquierda;
-    private Nodo derecha;
+    protected Nodo izquierda;
+    protected Nodo derecha;
 
     //Constructor
     public Nodo(int valor) {
@@ -16,25 +16,6 @@ public class Nodo implements INodo {
         return valor;
     }
 
-    public void setValor(int valor) {
-        this.valor = valor;
-    }
-
-    public Nodo getIzquierda() {
-        return izquierda;
-    }
-
-    public void setIzquierda(Nodo izquierda) {
-        this.izquierda = izquierda;
-    }
-
-    public Nodo getDerecha() {
-        return derecha;
-    }
-
-    public void setDerecha(Nodo derecha) {
-        this.derecha = derecha;
-    }
 
     //Metodos
     public boolean agregar(int valor) {
