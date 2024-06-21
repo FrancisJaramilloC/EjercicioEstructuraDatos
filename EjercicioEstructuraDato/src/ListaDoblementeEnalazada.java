@@ -4,21 +4,6 @@ public class ListaDoblementeEnalazada extends ListaEnlazada {
         super(valor);
     }
 
-    public void  ordenarAscendente(){
-        NodoLista nodo = this.inicio;
-        while (nodo != null) {
-            NodoLista nodo2 = nodo.getActual();
-            while (nodo2 != null) {
-                if (nodo.getValor() > nodo2.getValor()) {
-                    int temp = nodo.getValor();
-                    nodo.setValor(nodo2.getValor());
-                    nodo2.setValor(temp);
-                }
-                nodo2 = nodo2.getActual();
-            }
-            nodo = nodo.getActual();
-        }
-    }
     public void eliminarRepetidos(int valor){
         NodoLista nodo = this.inicio;
         boolean encontrado = false;

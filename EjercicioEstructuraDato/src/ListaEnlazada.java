@@ -14,7 +14,7 @@ public class ListaEnlazada implements Lista {
         this.numNodos++;
         return this.fin.agregar(valor);
     }
-    @Override
+
     public boolean insertar(int valor, int posicion){
         if (posicion == 0) {
             NodoLista nuevoNodo = new NodoLista(valor);
@@ -43,6 +43,23 @@ public class ListaEnlazada implements Lista {
         this.numNodos--;
         this.inicio = this.inicio.actual;
     }
+    @Override
+    public void ordenarAscendente(){
+        NodoLista nodo = this.inicio;
+        while (nodo != null) {
+            NodoLista nodo2 = nodo.getActual();
+            while (nodo2 != null) {
+                if (nodo.getValor() > nodo2.getValor()) {
+                    int temp = nodo.getValor();
+                    nodo.setValor(nodo2.getValor());
+                    nodo2.setValor(temp);
+                }
+                nodo2 = nodo2.getActual();
+            }
+            nodo = nodo.getActual();
+        }
+    }
+
 
     @Override
     public String toString() {

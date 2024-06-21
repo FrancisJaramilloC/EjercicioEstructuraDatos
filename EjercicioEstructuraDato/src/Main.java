@@ -43,6 +43,15 @@ public class Main {
         listaDoble.ordenarAscendente();
         System.out.println("Lista ordenada: " + listaDoble);
 
+        ListaCircular listaCircular = new ListaCircular(29);
+        listaCircular.agregar(10);
+        listaCircular.agregar(20);
+        System.out.println("Lista Original: \nta" + listaCircular);
 
+        ListaCircularDoble listaCircularDoble = new ListaCircularDoble(29);
+        listaCircularDoble.agregar(10);
+
+        System.out.println("Lista Original: \n" + listaCircularDoble);
     }
+
 }
